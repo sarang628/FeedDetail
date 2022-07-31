@@ -1,0 +1,87 @@
+[
+  {
+    "comment_id": 66,
+    "review_id": 531,
+    "user": {
+      "user_id": 4,
+      "user_name": "베이글",
+      "email": null,
+      "login_platform": null,
+      "create_date": null,
+      "profile_pic_url": "http://sarang628.iptime.org:91/profile_images/4/2021-10-25/04:57:39.003.jpg",
+      "review_count": 0,
+      "followers": 0,
+      "following": 0
+    },
+    "comment": "aaaa",
+    "create_date": "2021-12-16 04:27:21"
+  },
+  {
+    "comment_id": 67,
+    "review_id": 531,
+    "user": {
+      "user_id": 4,
+      "user_name": "베이글",
+      "email": null,
+      "login_platform": null,
+      "create_date": null,
+      "profile_pic_url": "http://sarang628.iptime.org:91/profile_images/4/2021-10-25/04:57:39.003.jpg",
+      "review_count": 0,
+      "followers": 0,
+      "following": 0
+    },
+    "comment": "bbbb",
+    "create_date": "2021-12-16 04:31:28"
+  },
+  {
+    "comment_id": 71,
+    "review_id": 531,
+    "user": {
+      "user_id": 4,
+      "user_name": "베이글",
+      "email": null,
+      "login_platform": null,
+      "create_date": null,
+      "profile_pic_url": "http://sarang628.iptime.org:91/profile_images/4/2021-10-25/04:57:39.003.jpg",
+      "review_count": 0,
+      "followers": 0,
+      "following": 0
+    },
+    "comment": "ㅋㅋㅋ",
+    "create_date": "2021-12-16 04:58:04"
+  },
+  {
+    "comment_id": 74,
+    "review_id": 531,
+    "user": {
+      "user_id": 4,
+      "user_name": "베이글",
+      "email": null,
+      "login_platform": null,
+      "create_date": null,
+      "profile_pic_url": "http://sarang628.iptime.org:91/profile_images/4/2021-10-25/04:57:39.003.jpg",
+      "review_count": 0,
+      "followers": 0,
+      "following": 0
+    },
+    "comment": "ffff",
+    "create_date": "2021-12-18 06:27:25"
+  },
+  {
+    "comment_id": 75,
+    "review_id": 531,
+    "user": {
+      "user_id": 4,
+      "user_name": "베이글",
+      "email": null,
+      "login_platform": null,
+      "create_date": null,
+      "profile_pic_url": "http://sarang628.iptime.org:91/profile_images/4/2021-10-25/04:57:39.003.jpg",
+      "review_count": 0,
+      "followers": 0,
+      "following": 0
+    },
+    "comment": "",
+    "create_date": "2021-12-18 06:27:48"
+  }
+]

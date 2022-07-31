@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="feed"
+            type="com.example.torang_core.data.model.FeedData" />
+
+        <variable
+            name="viewModel"
+            type="com.sarang.timelinedetail2.TimeLineDetailViewModel" />
+
+        <import type="com.sarang.timelinedetail2.CommentsRvAdt" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSecondaryLight"
+        android:clickable="true"
+        android:focusable="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="댓글"
+            tools:layout_height="50dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTimeLineDetail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:bindFeed="@{viewModel.feed}"
+            app:itemMarginTop="@{8}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+            tools:listitem="@layout/item_time_line_detail_header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@color/colorSecondaryLight"
+            android:elevation="10dp"
+            android:visibility="@{viewModel.isLogin ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include
+                layout="@layout/item_write_comment"
+                app:viewModel="@{viewModel}"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
