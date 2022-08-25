@@ -1,4 +1,4 @@
-package com.sarang.timelinedetail2;
+package com.sarang.feed_detail;
 
 import org.junit.Test;
 

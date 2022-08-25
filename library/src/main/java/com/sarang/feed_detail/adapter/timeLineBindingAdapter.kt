@@ -1,4 +1,4 @@
-package com.sarang.timelinedetail2
+package com.sarang.feed_detail
 
 import android.graphics.Rect
 import android.view.View
@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.torang_core.data.model.ReviewImage
 import com.example.torang_core.util.Logger
+import com.sarang.feed_detail.adapter.PictureAdapter
 
 @BindingAdapter("select")
 fun select(view: View, select: Boolean) {

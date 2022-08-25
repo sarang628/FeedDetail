@@ -1,4 +1,4 @@
-package com.sarang.timelinedetail2
+package com.sarang.feed_detail.viewmodel
 
 import androidx.lifecycle.*
 import com.example.torang_core.data.data.ReviewAndImage

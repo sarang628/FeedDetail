@@ -15,7 +15,7 @@
 
         <variable
             name="viewModel"
-            type="com.sarang.timelinedetail2.TimeLineDetailViewModel" />
+            type="com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

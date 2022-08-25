@@ -1,4 +1,4 @@
-package com.sarang.timelinedetail2
+package com.sarang.feed_detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,9 @@ import com.example.torang_core.navigation.NotLoggedInMenuBottomSheetNavigation
 import com.example.torang_core.navigation.ReportNavigation
 import com.example.torang_core.util.EventObserver
 import com.example.torang_core.util.Logger
-import com.sarang.timelinedetail2.databinding.FragmentCommentsBinding
+import com.sarang.feed_detail.adapter.CommentsRvAdt
+import com.sarang.feed_detail.databinding.FragmentCommentsBinding
+import com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import javax.inject.Inject

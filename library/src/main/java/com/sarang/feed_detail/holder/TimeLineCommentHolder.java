@@ -1,4 +1,4 @@
-package com.sarang.timelinedetail2;
+package com.sarang.feed_detail.holder;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,10 +6,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sarang.timelinedetail2.databinding.ItemCommentBinding;
+import com.sarang.feed_detail.databinding.ItemCommentBinding;
 
 public class TimeLineCommentHolder extends RecyclerView.ViewHolder {
-    ItemCommentBinding mBinding;
+    public ItemCommentBinding mBinding;
 
     public TimeLineCommentHolder(@NonNull ItemCommentBinding itemCommentBinding) {
         super(itemCommentBinding.getRoot());

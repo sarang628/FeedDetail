@@ -11,9 +11,9 @@
 
         <variable
             name="viewModel"
-            type="com.sarang.timelinedetail2.TimeLineDetailViewModel" />
+            type="com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel" />
 
-        <import type="com.sarang.timelinedetail2.CommentsRvAdt" />
+        <import type="com.sarang.feed_detail.adapter.CommentsRvAdt" />
 
         <import type="android.view.View" />
     </data>

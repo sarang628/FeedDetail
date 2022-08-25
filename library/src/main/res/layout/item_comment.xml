@@ -87,7 +87,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@{comment.createDate}"
-            app:layout_constraintEnd_toStartOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent" />
 
 

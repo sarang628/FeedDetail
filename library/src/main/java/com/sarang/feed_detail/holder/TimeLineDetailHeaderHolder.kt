@@ -1,12 +1,11 @@
-package com.sarang.timelinedetail2
+package com.sarang.feed_detail.holder
 
-import com.example.torang_core.data.data.ReviewAndImage
-import android.view.ViewGroup
-import com.sarang.timelinedetail2.TimeLineDetailHeaderHolder
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.torang_core.data.data.ReviewAndImage
 import com.example.torang_core.util.Logger
-import com.sarang.timelinedetail2.databinding.ItemTimeLineDetailHeaderBinding
+import com.sarang.feed_detail.databinding.ItemTimeLineDetailHeaderBinding
 
 class TimeLineDetailHeaderHolder(var mBinding: ItemTimeLineDetailHeaderBinding) :
     RecyclerView.ViewHolder(

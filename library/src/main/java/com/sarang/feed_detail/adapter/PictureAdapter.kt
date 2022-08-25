@@ -1,8 +1,9 @@
-package com.sarang.timelinedetail2
+package com.sarang.feed_detail.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.example.torang_core.data.model.ReviewImage
+import com.sarang.feed_detail.holder.PictureViewHolder
 import java.util.ArrayList
 
 class PictureAdapter() : RecyclerView.Adapter<PictureViewHolder>() {
@@ -17,7 +18,7 @@ class PictureAdapter() : RecyclerView.Adapter<PictureViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
-        holder.mBinding.url = pictures[position].picture_url
+        holder.binding.url = pictures[position].picture_url
     }
 
     override fun getItemCount(): Int {
