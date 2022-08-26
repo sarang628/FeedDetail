@@ -6,14 +6,8 @@
     <data>
 
         <variable
-            name="feed"
-            type="com.example.torang_core.data.model.FeedData" />
-
-        <variable
-            name="viewModel"
-            type="com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel" />
-
-        <import type="com.sarang.feed_detail.adapter.CommentsRvAdt" />
+            name="usecase"
+            type="com.sarang.feed_detail.ui.usecase.CommentsLayoutUsecase" />
 
         <import type="android.view.View" />
     </data>
@@ -40,7 +34,6 @@
             android:id="@+id/rvTimeLineDetail"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:bindFeed="@{viewModel.feed}"
             app:itemMarginTop="@{8}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -56,12 +49,10 @@
             android:layout_marginTop="3dp"
             android:background="@color/colorSecondaryLight"
             android:elevation="10dp"
-            android:visibility="@{viewModel.isLogin ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <include
                 layout="@layout/item_write_comment"
-                app:viewModel="@{viewModel}"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>

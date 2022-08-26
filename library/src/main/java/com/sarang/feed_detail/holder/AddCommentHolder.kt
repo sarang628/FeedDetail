@@ -7,10 +7,6 @@ import com.sarang.feed_detail.databinding.ItemWriteCommentBinding
 import com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel
 
 class AddCommentHolder(val binding: ItemWriteCommentBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun setViewModel(timeLineDetailViewModel: TimeLineDetailViewModel?) {
-        binding.setViewModel(timeLineDetailViewModel)
-    }
-
     companion object {
         fun create(parent: ViewGroup): AddCommentHolder {
             return AddCommentHolder(

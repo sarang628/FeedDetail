@@ -4,18 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="user"
-            type="com.example.torang_core.data.model.User" />
-
-        <variable
-            name="comment"
-            type="com.example.torang_core.data.model.Comment" />
-
-        <variable
-            name="viewModel"
-            type="com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel" />
+            name="useCase"
+            type="com.sarang.feed_detail.ui.usecase.ItemWriteCommentUsecase" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +18,7 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            loadProfileImage="@{user.profile_pic_url}"
+            loadProfileImage="@{useCase.profilePictureUrl}"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
@@ -47,7 +38,7 @@
             android:minLines="1"
             android:overScrollMode="never"
             android:scrollHorizontally="false"
-            android:text="@={viewModel.comment}"
+            android:text="@={useCase.comment}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintStart_toEndOf="@+id/imageView3" />
@@ -58,9 +49,8 @@
             android:layout_height="30dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
-            android:enabled="@{viewModel.comment.length() == 0 ? false : true}"
+            android:enabled="@{useCase.comment.length() == 0 ? false : true}"
             android:gravity="center"
-            android:onClick="@{()->viewModel.addComment()}"
             android:singleLine="true"
             android:text="게시"
             android:textColor="@color/comment_post_text_color"

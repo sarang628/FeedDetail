@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/app/src/main/res/layout/activity_main.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/activity_feed_detail.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/activity_time_line_detail.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/fragment_comments.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/item_comment.xml" value="0.5" />
         <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/item_time_line_detail_header.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/item_timeline_detail_picture.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/sryang/StudioProjects/FeedDetail/library/src/main/res/layout/item_write_comment.xml" value="0.1" />
       </map>
     </option>
   </component>
