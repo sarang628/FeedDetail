@@ -7,7 +7,6 @@ import com.example.torang_core.data.model.Comment
 import com.example.torang_core.util.Logger
 import com.sarang.feed_detail.holder.TimeLineCommentHolder
 import com.sarang.feed_detail.holder.TimeLineDetailHeaderHolder
-import com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel
 import java.util.*
 
 /**
@@ -19,8 +18,7 @@ import java.util.*
  * [ItemTimeLineDetailHeaderBinding]
  */
 
-class CommentsRvAdt constructor(private val timeLineDetailViewModel: TimeLineDetailViewModel) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     enum class TimeLineDetailItemType {
         FEED,
         COMMENT

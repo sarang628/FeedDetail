@@ -1,4 +1,4 @@
-package com.sryang.myapplication
+package com.sryang.feed_detail
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.sryang.myapplication.di.navigation
+package com.sryang.feed_detail.di.navigation
 
 import android.content.Context
 import androidx.fragment.app.FragmentManager

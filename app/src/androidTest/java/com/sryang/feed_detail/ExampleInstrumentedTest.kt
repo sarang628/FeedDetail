@@ -1,8 +1,6 @@
-package com.sryang.myapplication
+package com.sryang.feed_detail
 
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.runner.AndroidJUnitRunner
 import com.example.torang_core.data.dao.LoggedInUserDao
 import com.example.torang_core.data.dao.UserDao
 import com.example.torang_core.data.model.LoggedInUserData
@@ -14,7 +12,6 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 
 import org.junit.Test
-import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
@@ -37,7 +34,7 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.sryang.myapplication", appContext.packageName)
+        assertEquals("com.sryang.feed_detail", appContext.packageName)
     }
 
     @Before

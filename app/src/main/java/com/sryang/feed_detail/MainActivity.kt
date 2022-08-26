@@ -1,4 +1,4 @@
-package com.sryang.myapplication
+package com.sryang.feed_detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

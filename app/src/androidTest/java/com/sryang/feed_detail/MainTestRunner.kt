@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sryang.myapplication
+package com.sryang.feed_detail
 
 import android.app.Application
 import android.content.Context
