@@ -1,14 +1,25 @@
 package com.sryang.feed_detail
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.sryang.feed_detail.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intent.putExtra("reviewId", 531)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater).apply {
+            btnCommentFragment.setOnClickListener {
+                goCommentFragment()
+            }
+        }
+        setContentView(binding.root)
+    }
+
+    private fun goCommentFragment() {
+
     }
 }

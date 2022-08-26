@@ -10,6 +10,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.torang_core.data.data.ReviewAndImage
+import com.example.torang_core.data.model.FeedData
+import com.example.torang_core.data.model.ReviewImage
+import com.example.torang_core.data.model.UserData
 import com.example.torang_core.navigation.MenuBottomSheetNavigation
 import com.example.torang_core.navigation.MyMenuBottomSheetNavigation
 import com.example.torang_core.navigation.NotLoggedInMenuBottomSheetNavigation
@@ -24,6 +28,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 /**
  * 코멘트를 볼 수 있는 화면
@@ -35,22 +40,9 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class CommentsFragment : Fragment() {
+
     private val viewModel: TimeLineDetailViewModel by viewModels()
-
-    @Inject
-    lateinit var menuBottomSheetNavigation: MenuBottomSheetNavigation
-
-    @Inject
-    lateinit var myMenuBottomSheetNavigation: MyMenuBottomSheetNavigation
-
-    @Inject
-    lateinit var notLoggedInMenuBottomSheetNavigation: NotLoggedInMenuBottomSheetNavigation
-
-    @Inject
-    lateinit var reportNavigation: ReportNavigation
-
     private var layoutUsecase = MutableStateFlow(CommentsLayoutUsecase())
-
     private val adapter = CommentsRvAdt()
 
     override fun onCreateView(
@@ -128,7 +120,49 @@ class CommentsFragment : Fragment() {
         //test
         viewLifecycleOwner.lifecycleScope.launch {
             layoutUsecase.update {
-                it.copy(errorMsg = "abc")
+                it.copy(
+                    errorMsg = "abc",
+                    reviewAndIamge = ReviewAndImage(
+                        review = FeedData(
+                            review_id = 1,
+                            userId = 1,
+                            is_favority = false,
+                            contents = "",
+                            create_date = "create_date",
+                            rating = 3.0f,
+                            restaurant_id = 3,
+                            like_amount = 10,
+                            comment_amount = 10
+                        ),
+                        images = ArrayList<ReviewImage>().apply {
+                            add(
+                                ReviewImage(
+                                    picture_id = 0,
+                                    restaurant_id = 1,
+                                    user_id = 3,
+                                    review_id = 4,
+                                    picture_url = "https://kr.cheesetart.com/wp-content/themes/bake_oversea/assets/images/common/og_image.jpg",
+                                    create_date = "abc",
+                                    menu_id = 10,
+                                    menu = 9
+                                )
+                            )
+                        },
+                        user = UserData(
+                            userId = 0,
+                            userName = "userName",
+                            email = "email",
+                            loginPlatform = "loginPlatform",
+                            create_date = "create_date",
+                            access_token = "access_token",
+                            profile_pic_url = "profile_pic_url",
+                            point = "point",
+                            review_count = "review_count",
+                            followers = "followers",
+                            following = "following"
+                        )
+                    )
+                )
             }
         }
     }
