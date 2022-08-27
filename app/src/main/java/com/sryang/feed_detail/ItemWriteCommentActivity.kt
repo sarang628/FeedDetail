@@ -34,9 +34,12 @@ class ItemWriteCommentActivity : AppCompatActivity() {
         lifecycleScope.launch {
             while (true) {
                 delay(1000)
-                /*_useCase.update {
-                    it.copy(comment = it.comment + "!")
-                }*/
+                _useCase.update {
+                    it.comment.update { "aaaabbb" }
+                    it.copy(
+                        comment = it.comment
+                    )
+                }
             }
         }
 
