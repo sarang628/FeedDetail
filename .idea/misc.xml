@@ -15,11 +15,14 @@
         <entry key="app/src/main/res/layout/activity_comment_detail.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/activity_item_comment.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/activity_item_feed_detail_header.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/layout/activity_item_write_comment.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17447916666666666" />
         <entry key="library/src/main/res/layout/activity_comment_detail.xml" value="0.3458333333333333" />
         <entry key="library/src/main/res/layout/activity_feed_detail.xml" value="0.17447916666666666" />
         <entry key="library/src/main/res/layout/item_comment.xml" value="0.3458333333333333" />
         <entry key="library/src/main/res/layout/item_time_line_detail_header.xml" value="0.17447916666666666" />
+        <entry key="library/src/main/res/layout/item_timeline_detail_picture.xml" value="0.3458333333333333" />
+        <entry key="library/src/main/res/layout/item_write_comment.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -53,6 +53,7 @@
             android:gravity="center"
             android:singleLine="true"
             android:text="게시"
+            android:onClickListener="@{useCase.clickPost}"
             android:textColor="@color/comment_post_text_color"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
