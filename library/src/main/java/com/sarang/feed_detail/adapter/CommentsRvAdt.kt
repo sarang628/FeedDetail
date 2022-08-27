@@ -7,6 +7,8 @@ import com.example.torang_core.data.model.Comment
 import com.example.torang_core.util.Logger
 import com.sarang.feed_detail.holder.TimeLineCommentHolder
 import com.sarang.feed_detail.holder.TimeLineDetailHeaderHolder
+import com.sarang.feed_detail.ui.usecase.ItemCommentLayoutUseCase
+import com.sarang.feed_detail.ui.usecase.ItemTimeLineDetailHeaderLayoutUseCase
 import java.util.*
 
 /**
@@ -24,10 +26,10 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         COMMENT
     }
 
-    private var feed: ReviewAndImage? = null
-    private var comments: ArrayList<Comment> = ArrayList()
+    private var headerUseCase: ItemTimeLineDetailHeaderLayoutUseCase? = null
+    private var comments: ArrayList<ItemCommentLayoutUseCase> = ArrayList()
 
-    fun addComment(index: Int, comment: Comment) {
+    fun addComment(index: Int, comment: ItemCommentLayoutUseCase) {
         comments.add(0, comment)
         notifyItemInserted(index)
     }
@@ -37,7 +39,7 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         else TimeLineDetailItemType.COMMENT.ordinal
     }
 
-    fun setComments(list: ArrayList<Comment>?) {
+    fun setComments(list: ArrayList<ItemCommentLayoutUseCase>?) {
         list?.let {
             Logger.d(list.size)
             if (comments.size == 0 || it.size == comments.size) {
@@ -59,10 +61,10 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             (holder as TimeLineDetailHeaderHolder).apply {
                 val pictureAdapter = PictureAdapter()
                 holder.mBinding.recyclerView.adapter = pictureAdapter
-                setFeed(feed)
+                setFeed(headerUseCase)
             }
         } else {
-
+            (holder as TimeLineCommentHolder).mBinding.useCase = comments[position - 1]
         }
     }
 
@@ -72,13 +74,13 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return count
     }
 
-    fun setFeed(feed: ReviewAndImage?) {
-        this.feed = feed
+    fun setHeader(useCase: ItemTimeLineDetailHeaderLayoutUseCase?) {
+        this.headerUseCase = useCase
         notifyDataSetChanged()
     }
 
-    fun deleteComment(comment: Comment) {
-        var deleteIndex = -1
+    fun deleteComment(comment: ItemCommentLayoutUseCase) {
+        /*var deleteIndex = -1
         for (i in comments!!.indices) {
             if (comments!![i].comment_id == comment.comment_id) deleteIndex = i
             break
@@ -86,6 +88,6 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         if (deleteIndex != -1) {
             comments!!.removeAt(deleteIndex)
             notifyItemRemoved(deleteIndex)
-        }
+        }*/
     }
 }

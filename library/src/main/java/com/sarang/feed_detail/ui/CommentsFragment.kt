@@ -24,6 +24,8 @@ import com.sarang.feed_detail.ui.usecase.CommentsLayoutUsecase
 import com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.*
@@ -42,21 +44,20 @@ import kotlin.collections.ArrayList
 class CommentsFragment : Fragment() {
 
     private val viewModel: TimeLineDetailViewModel by viewModels()
-    private var layoutUsecase = MutableStateFlow(CommentsLayoutUsecase())
     private val adapter = CommentsRvAdt()
+    val _layoutUsecase: MutableStateFlow<CommentsLayoutUsecase> = MutableStateFlow(
+        CommentsLayoutUsecase()
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentCommentsBinding
-            .inflate(layoutInflater, container, false).apply {
-                init()
-                subScribeUI(layoutUsecase)
-            }
+        val binding = FragmentCommentsBinding.inflate(layoutInflater, container, false)
+        binding.init()
+        binding.subScribeUI(_layoutUsecase)
         subScribeViewModel() // ViewModel 구독
         loadComment()
-        test()
 
         return binding.root
     }
@@ -71,24 +72,24 @@ class CommentsFragment : Fragment() {
     }
 
     private fun FragmentCommentsBinding.subScribeUI(
-        useCase: MutableStateFlow<CommentsLayoutUsecase>
+        useCase: StateFlow<CommentsLayoutUsecase>
     ) {
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             useCase.collect {
                 this@subScribeUI.usecase = it
+                it.errorMsg?.let { showErrorMsg(it) }
+                it.isEmpty?.let { if (it) showEmptyPopup() }
+                //it.reviewAndIamge?.let { adapter.setHeader(it) }
             }
         }
     }
 
-    /**
-     * UI 구독하기
-     */
     private fun subScribeViewModel() {
-        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            layoutUsecase.collect {
-                it.errorMsg?.let { showErrorMsg(it) }
-                it.isEmpty?.let { if (it) showEmptyPopup() }
-                it.reviewAndIamge?.let { adapter.setFeed(it) }
+        lifecycleScope.launchWhenResumed {
+            viewModel.uiState.collect {
+                it?.let {
+
+                }
             }
         }
     }
@@ -113,57 +114,6 @@ class CommentsFragment : Fragment() {
         // 코멘트 불러오기
         if (requireActivity().intent.hasExtra("reviewId")) {
             viewModel.loadComments(requireActivity().intent.getIntExtra("reviewId", 0))
-        }
-    }
-
-    private fun test() {
-        //test
-        viewLifecycleOwner.lifecycleScope.launch {
-            layoutUsecase.update {
-                it.copy(
-                    errorMsg = "abc",
-                    reviewAndIamge = ReviewAndImage(
-                        review = FeedData(
-                            review_id = 1,
-                            userId = 1,
-                            is_favority = false,
-                            contents = "",
-                            create_date = "create_date",
-                            rating = 3.0f,
-                            restaurant_id = 3,
-                            like_amount = 10,
-                            comment_amount = 10
-                        ),
-                        images = ArrayList<ReviewImage>().apply {
-                            add(
-                                ReviewImage(
-                                    picture_id = 0,
-                                    restaurant_id = 1,
-                                    user_id = 3,
-                                    review_id = 4,
-                                    picture_url = "https://kr.cheesetart.com/wp-content/themes/bake_oversea/assets/images/common/og_image.jpg",
-                                    create_date = "abc",
-                                    menu_id = 10,
-                                    menu = 9
-                                )
-                            )
-                        },
-                        user = UserData(
-                            userId = 0,
-                            userName = "userName",
-                            email = "email",
-                            loginPlatform = "loginPlatform",
-                            create_date = "create_date",
-                            access_token = "access_token",
-                            profile_pic_url = "profile_pic_url",
-                            point = "point",
-                            review_count = "review_count",
-                            followers = "followers",
-                            following = "following"
-                        )
-                    )
-                )
-            }
         }
     }
 }

@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.torang_core.data.data.ReviewAndImage
 import com.example.torang_core.util.Logger
 import com.sarang.feed_detail.databinding.ItemTimeLineDetailHeaderBinding
+import com.sarang.feed_detail.ui.usecase.ItemTimeLineDetailHeaderLayoutUseCase
 
 class TimeLineDetailHeaderHolder(var mBinding: ItemTimeLineDetailHeaderBinding) :
-    RecyclerView.ViewHolder(
-        mBinding.root
-    ) {
-    private var feed: ReviewAndImage? = null
-    fun setFeed(feed: ReviewAndImage?) {
-        Logger.d("setFeed $feed")
-        this.feed = feed
+    RecyclerView.ViewHolder(mBinding.root) {
+    fun setFeed(useCase: ItemTimeLineDetailHeaderLayoutUseCase?) {
+        Logger.d("useCase $useCase")
+        mBinding.useCase = useCase
     }
 
     companion object {

@@ -18,4 +18,16 @@
         android:layout_height="wrap_content"
         android:text="ItemComment" />
 
+    <Button
+        android:id="@+id/btn_item_write_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ItemWriteComment" />
+
+    <Button
+        android:id="@+id/btn_item_feed_detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ItemFeedDetailHeader" />
+
 </LinearLayout>

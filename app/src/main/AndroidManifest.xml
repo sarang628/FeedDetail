@@ -15,13 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ItemWriteCommentActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ItemFeedDetailHeaderActivity"
             android:exported="true"></activity>
@@ -30,10 +24,20 @@
             android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"></activity>
         <activity
-            android:name=".CommentDetailActivity"
+            android:name=".CommentFragmentActivity"
             android:exported="true" />
+
+        <activity
+            android:name="com.sarang.feed_detail.ui.TimeLineDetailActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

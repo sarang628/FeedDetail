@@ -9,6 +9,10 @@
             name="usecase"
             type="com.sarang.feed_detail.ui.usecase.CommentsLayoutUsecase" />
 
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
         <import type="android.view.View" />
     </data>
 
@@ -34,6 +38,7 @@
             android:id="@+id/rvTimeLineDetail"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:adapter="@{adapter}"
             app:itemMarginTop="@{8}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"

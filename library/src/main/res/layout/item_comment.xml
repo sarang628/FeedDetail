@@ -59,9 +59,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="2일"
+            android:text="@{useCase.createDate}"
             app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:text="2일" />
 
         <TextView
             android:id="@+id/textView5"

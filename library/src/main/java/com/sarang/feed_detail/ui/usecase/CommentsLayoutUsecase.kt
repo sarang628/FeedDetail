@@ -7,6 +7,7 @@ data class CommentsLayoutUsecase(
     val comment: String? = null,
     val errorMsg: String? = null,
     val isEmpty: Boolean? = null,
-    val comments: ArrayList<Comment>? = null,
-    val reviewAndIamge : ReviewAndImage? = null
+    val comments: ArrayList<ItemCommentLayoutUseCase>? = null,
+    val reviewAndIamge: ReviewAndImage? = null,
+    val headerLayoutUseCase: ItemTimeLineDetailHeaderLayoutUseCase? = null
 )

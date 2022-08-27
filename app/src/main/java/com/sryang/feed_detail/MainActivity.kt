@@ -3,7 +3,6 @@ package com.sryang.feed_detail
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.sryang.feed_detail.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,15 +17,29 @@ class MainActivity : AppCompatActivity() {
             btnItemComment.setOnClickListener {
                 goItemComment()
             }
+            btnItemWriteComment.setOnClickListener {
+                goItemWriteComment()
+            }
+            btnItemFeedDetailHeader.setOnClickListener {
+                goFeedDetailHeader()
+            }
         }
         setContentView(binding.root)
     }
 
     private fun goCommentFragment() {
-        startActivity(Intent(this, CommentDetailActivity::class.java))
+        startActivity(Intent(this, CommentFragmentActivity::class.java))
     }
 
     private fun goItemComment() {
         startActivity(Intent(this, ItemCommentActivity::class.java))
+    }
+
+    private fun goItemWriteComment() {
+        startActivity(Intent(this, ItemWriteCommentActivity::class.java))
+    }
+
+    private fun goFeedDetailHeader() {
+        startActivity(Intent(this, ItemFeedDetailHeaderActivity::class.java))
     }
 }

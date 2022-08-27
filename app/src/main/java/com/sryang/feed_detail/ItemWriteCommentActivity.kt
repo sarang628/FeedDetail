@@ -35,7 +35,6 @@ class ItemWriteCommentActivity : AppCompatActivity() {
             while (true) {
                 delay(1000)
                 _useCase.update {
-                    it.comment.update { "aaaabbb" }
                     it.copy(
                         comment = it.comment
                     )
