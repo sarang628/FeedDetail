@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="feed"
-            type="com.example.torang_core.data.data.ReviewAndImage" />
+            name="useCase"
+            type="com.sarang.feed_detail.ui.usecase.ItemTimeLineDetailHeaderLayoutUseCase" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
 
         <ImageView
             android:id="@+id/imageView"
-            loadProfileImage="@{feed.user.profile_pic_url}"
+            loadProfileImage="@{useCase.profilePictureUrl}"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{feed.user.userName}"
+            android:text="@{useCase.userName}"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:rating="@{feed.review.rating}"
+            android:rating="@{useCase.rating}"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{feed.review.create_date}"
+            android:text="@{useCase.createDate}"
             app:layout_constraintEnd_toStartOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,10 +73,12 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{feed.review.contents}"
+            android:text="@{useCase.contents}"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
+
+        <!--app:bindPicture="@{feed.images}"-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -85,7 +87,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="8dp"
             android:orientation="horizontal"
-            app:bindPicture="@{feed.images}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

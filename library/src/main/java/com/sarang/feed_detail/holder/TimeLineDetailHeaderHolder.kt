@@ -15,7 +15,6 @@ class TimeLineDetailHeaderHolder(var mBinding: ItemTimeLineDetailHeaderBinding) 
     fun setFeed(feed: ReviewAndImage?) {
         Logger.d("setFeed $feed")
         this.feed = feed
-        mBinding.feed = feed
     }
 
     companion object {
