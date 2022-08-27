@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     class="com.sarang.feed_detail.ui.CommentsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.CommentDetailActivity">
+    android:layout_height="match_parent">
 
 </fragment>

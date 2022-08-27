@@ -62,7 +62,7 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 setFeed(feed)
             }
         } else {
-            (holder as TimeLineCommentHolder).mBinding.comment = comments!![position - 1]
+
         }
     }
 

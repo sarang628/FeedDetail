@@ -6,12 +6,8 @@
     <data>
 
         <variable
-            name="comment"
-            type="com.example.torang_core.data.model.Comment" />
-
-        <variable
-            name="me"
-            type="com.example.torang_core.data.model.User" />
+            name="useCase"
+            type="com.sarang.feed_detail.ui.usecase.ItemCommentLayoutUseCase" />
 
         <import type="android.view.View" />
     </data>
@@ -24,10 +20,11 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            loadProfileImage="@{comment.user.profile_pic_url}"
+            loadProfileImage="@{useCase.profilePictureUrl}"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="8dp"
+            android:onClickListener="@{useCase.clickProfilePic}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -37,7 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{comment.user.userName}"
+            android:onClickListener="@{useCase.clickProfileName}"
+            android:text="@{useCase.userName}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2"
@@ -47,12 +45,12 @@
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginStart="5dp"
             android:layout_marginRight="16dp"
-            android:text="@{comment.comment}"
+            android:text="@{useCase.comment}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
             tools:text="동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강한 대한사람 대한으로 길이 보전하세" />
 
 
@@ -62,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="2일"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
@@ -70,9 +68,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="좋아요 10개"
+            android:onClickListener="@{useCase.clickLikeCount}"
+            android:text="@{@string/like_count(useCase.likeCount)}"
             app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="@+id/textView4" />
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            tools:text="좋아요 10개" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,14 +81,6 @@
             android:text="답글달기"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@{comment.createDate}"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

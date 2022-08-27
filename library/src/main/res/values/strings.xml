@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TimeLineDetail</string>
+    <string name="like_count">좋아요 %s개</string>
 </resources>

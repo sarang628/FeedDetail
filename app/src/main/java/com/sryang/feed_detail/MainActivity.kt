@@ -15,11 +15,18 @@ class MainActivity : AppCompatActivity() {
             btnCommentFragment.setOnClickListener {
                 goCommentFragment()
             }
+            btnItemComment.setOnClickListener {
+                goItemComment()
+            }
         }
         setContentView(binding.root)
     }
 
     private fun goCommentFragment() {
+        startActivity(Intent(this, CommentDetailActivity::class.java))
+    }
 
+    private fun goItemComment() {
+        startActivity(Intent(this, ItemCommentActivity::class.java))
     }
 }

@@ -3,10 +3,7 @@
     package="com.sarang.feed_detail">
 
     <application>
-        <activity
-            android:name=".CommentDetailActivity"
-            android:exported="false" />
-        <activity android:name="com.sarang.feed_detail.TimeLineDetailActivity" />
+        <activity android:name="com.sarang.feed_detail.ui.TimeLineDetailActivity" />
     </application>
 
 </manifest>

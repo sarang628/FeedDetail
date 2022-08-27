@@ -1,7 +1,7 @@
 package com.posco.feedscreentestapp.di.navigation
 
 import com.example.torang_core.navigation.TimeLineDetailNavigation
-import com.sarang.feed_detail.TimeLineDetailNavigationImpl
+import com.sarang.feed_detail.ui.TimeLineDetailNavigationImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

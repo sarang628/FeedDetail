@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.sryang.feed_detail.TorangDetailTimeLineTestApplication"
+        android:name=".TorangDetailTimeLineTestApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="코멘트 테스트"
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.sryang.feed_detail.MainActivity"
+            android:name=".ItemCommentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".CommentDetailActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

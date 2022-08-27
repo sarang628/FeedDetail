@@ -1,10 +1,11 @@
-package com.sarang.feed_detail
+package com.sarang.feed_detail.ui
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.torang_core.navigation.TimeLineDetailNavigation
+import com.sarang.feed_detail.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
