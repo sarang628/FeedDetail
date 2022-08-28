@@ -6,7 +6,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.torang_core.data.model.ReviewImage
 import com.example.torang_core.util.Logger
+import com.sarang.feed_detail.adapter.FeedDetailAdapter
 import com.sarang.feed_detail.adapter.PictureAdapter
+import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemCommentLayoutUseCase
 
 @BindingAdapter("select")
 fun select(view: View, select: Boolean) {
@@ -50,5 +53,27 @@ fun setAdapter(
 ) {
     adapter?.let {
         recyclerView.adapter = it
+    }
+}
+
+@BindingAdapter("app:setHeaderUseCase")
+fun setHeaderUseCase(
+    recyclerView: RecyclerView,
+    layoutUseCase: FeedDetailHeaderLayoutUseCase?
+) {
+    layoutUseCase?.let {
+        if (recyclerView.adapter != null)
+            (recyclerView.adapter as FeedDetailAdapter).setHeader(it)
+    }
+}
+
+@BindingAdapter("app:setCommentsUseCase")
+fun setCommentsUseCase(
+    recyclerView: RecyclerView,
+    comments: ArrayList<ItemCommentLayoutUseCase>?
+) {
+    comments?.let {
+        if (recyclerView.adapter != null)
+            (recyclerView.adapter as FeedDetailAdapter).setComments(it)
     }
 }

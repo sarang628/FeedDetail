@@ -2,7 +2,7 @@
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frag"
-    class="com.sarang.feed_detail.ui.CommentsFragment"
+    class="com.sarang.feed_detail.ui.FeedDetailFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sarang.feed_detail.ui.FeedDetailActivity" />

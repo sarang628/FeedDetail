@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.sarang.feed_detail.adapter.FeedDetailAdapter
-import com.sarang.feed_detail.data.usecase.CommentsFragmentUsecase
+import com.sarang.feed_detail.data.usecase.CommentsFragmentUseCase
 import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
 import com.sarang.feed_detail.databinding.FragmentCommentsBinding
-import com.sarang.feed_detail.viewmodel.FeedDetailViewModel
 import com.sarang.feed_detail.test.TestFeedDetailViewModel
+import com.sarang.feed_detail.viewmodel.FeedDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,20 +23,19 @@ import kotlinx.coroutines.flow.update
 import java.util.*
 
 /**
- * 코멘트를 볼 수 있는 화면
- * [FeedDetailAdapter]
+ * layout - [FragmentCommentsBinding]
  * [TimeLineDetailHeaderHolder]
  * [FeedDetailViewModel]
  * [FragmentTimeLineDetailBinding]
  * [ItemCommentBinding]
  */
 @AndroidEntryPoint
-class CommentsFragment : Fragment() {
+class FeedDetailFragment : Fragment() {
 
     private val viewModel: TestFeedDetailViewModel by viewModels()
     private val adapter = FeedDetailAdapter()
-    private val _layoutUsecase: MutableStateFlow<CommentsFragmentUsecase> = MutableStateFlow(
-        CommentsFragmentUsecase()
+    private val _layoutUsecase: MutableStateFlow<CommentsFragmentUseCase> = MutableStateFlow(
+        CommentsFragmentUseCase()
     )
 
     override fun onCreateView(
@@ -46,7 +45,7 @@ class CommentsFragment : Fragment() {
     ): View {
         val binding = FragmentCommentsBinding.inflate(layoutInflater, container, false)
         binding.init()
-        binding.bindUseCase(_layoutUsecase)
+        binding.subscribeUseCase(_layoutUsecase)
         subScribeUiState(_layoutUsecase)
         loadComment()
 
@@ -54,43 +53,42 @@ class CommentsFragment : Fragment() {
     }
 
     private fun FragmentCommentsBinding.init() {
-        adapter = this@CommentsFragment.adapter
+        adapter = this@FeedDetailFragment.adapter
         lifecycleOwner = viewLifecycleOwner
-        setSupportActionbar(toolbar2) // 툴바 초기화
-        toolbar2.setNavigationOnClickListener { //툴바 뒤로가기 버튼 클릭
+        setSupportActionbar(toolbar) // 툴바 초기화
+        toolbar.setNavigationOnClickListener { //툴바 뒤로가기 버튼 클릭
             requireActivity().onBackPressed()
         }
     }
 
-    private fun subScribeUiState(layoutUseCase: MutableStateFlow<CommentsFragmentUsecase>) {
+    private fun subScribeUiState(layoutUseCase: MutableStateFlow<CommentsFragmentUseCase>) {
         lifecycleScope.launchWhenResumed {
             viewModel.uiState.collect {
                 it?.let { uiState ->
                     layoutUseCase.update {
                         it.copy(
-                            comment = uiState.comment,
-                            errorMsg = uiState.errorMsg,
-                            isEmpty = uiState.isEmptyFeed,
-                            //comments = uiState.comments1
-                            reviewAndIamge = uiState.feed,
                             headerLayoutUseCase = FeedDetailHeaderLayoutUseCase.parse(uiState.feed)
                         )
+                    }
+
+                    if (uiState.errorMsg != null) {
+                        showErrorMsg(uiState.errorMsg)
+                    }
+
+                    if (uiState.isEmptyFeed != null) {
+                        if (uiState.isEmptyFeed) showEmptyPopup()
                     }
                 }
             }
         }
     }
 
-    private fun FragmentCommentsBinding.bindUseCase(
-        useCase: StateFlow<CommentsFragmentUsecase>
+    private fun FragmentCommentsBinding.subscribeUseCase(
+        useCase: StateFlow<CommentsFragmentUseCase>
     ) {
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             useCase.collect {
-                this@bindUseCase.usecase = it
-                it.errorMsg?.let { showErrorMsg(it) }
-                it.isEmpty?.let { if (it) showEmptyPopup() }
-                this@CommentsFragment.adapter.setHeader(it.headerLayoutUseCase)
-                //it.reviewAndIamge?.let { adapter.setHeader(it) }
+                this@subscribeUseCase.useCase = it
             }
         }
     }

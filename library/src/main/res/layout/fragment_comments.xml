@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="usecase"
-            type="com.sarang.feed_detail.data.usecase.CommentsFragmentUsecase" />
+            name="useCase"
+            type="com.sarang.feed_detail.data.usecase.CommentsFragmentUseCase" />
 
         <variable
             name="adapter"
@@ -25,7 +25,7 @@
         android:focusable="true">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
+            android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
             tools:layout_height="50dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTimeLineDetail"
+            android:id="@+id/rv_feed_detail"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adapter="@{adapter}"
@@ -44,24 +44,25 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:setCommentsUseCase="@{useCase.comments}"
+            app:setHeaderUseCase="@{useCase.headerLayoutUseCase}"
             tools:listitem="@layout/item_time_line_detail_header" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
             android:background="@color/colorSecondaryLight"
             android:elevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <include
-                layout="@layout/item_write_comment"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+                android:id="@+id/ic_item_write_comment"
+                layout="@layout/item_write_comment" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,5 +12,5 @@ data class FeedDetailUiState(
     val comment: String,
     val isLogin: Boolean,
     val errorMsg: String? = null,
-    val isEmptyFeed: Boolean
+    val isEmptyFeed: Boolean? = null
 )

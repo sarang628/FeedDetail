@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goCommentFragment() {
-        startActivity(Intent(this, CommentFragmentActivity::class.java))
+        startActivity(Intent(this, FeedDetailFragmentActivity::class.java))
     }
 
     private fun goItemComment() {
