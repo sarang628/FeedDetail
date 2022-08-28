@@ -8,8 +8,8 @@ import com.example.torang_core.data.model.ReviewImage
 import com.example.torang_core.util.Logger
 import com.sarang.feed_detail.adapter.FeedDetailAdapter
 import com.sarang.feed_detail.adapter.PictureAdapter
-import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
-import com.sarang.feed_detail.data.usecase.ItemCommentLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemFeedDetailHeaderLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemFeedDetailCommentLayoutUseCase
 
 @BindingAdapter("select")
 fun select(view: View, select: Boolean) {
@@ -59,7 +59,7 @@ fun setAdapter(
 @BindingAdapter("app:setHeaderUseCase")
 fun setHeaderUseCase(
     recyclerView: RecyclerView,
-    layoutUseCase: FeedDetailHeaderLayoutUseCase?
+    layoutUseCase: ItemFeedDetailHeaderLayoutUseCase?
 ) {
     layoutUseCase?.let {
         if (recyclerView.adapter != null)
@@ -70,7 +70,7 @@ fun setHeaderUseCase(
 @BindingAdapter("app:setCommentsUseCase")
 fun setCommentsUseCase(
     recyclerView: RecyclerView,
-    comments: ArrayList<ItemCommentLayoutUseCase>?
+    comments: ArrayList<ItemFeedDetailCommentLayoutUseCase>?
 ) {
     comments?.let {
         if (recyclerView.adapter != null)

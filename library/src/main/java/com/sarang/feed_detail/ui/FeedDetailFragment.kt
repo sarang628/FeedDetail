@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.sarang.feed_detail.adapter.FeedDetailAdapter
 import com.sarang.feed_detail.data.usecase.CommentsFragmentUseCase
-import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemFeedDetailHeaderLayoutUseCase
 import com.sarang.feed_detail.databinding.FragmentCommentsBinding
 import com.sarang.feed_detail.test.TestFeedDetailViewModel
 import com.sarang.feed_detail.viewmodel.FeedDetailViewModel
@@ -24,6 +24,7 @@ import java.util.*
 
 /**
  * layout - [FragmentCommentsBinding]
+ * adapter - [FeedDetailAdapter]
  * [TimeLineDetailHeaderHolder]
  * [FeedDetailViewModel]
  * [FragmentTimeLineDetailBinding]
@@ -67,7 +68,7 @@ class FeedDetailFragment : Fragment() {
                 it?.let { uiState ->
                     layoutUseCase.update {
                         it.copy(
-                            headerLayoutUseCase = FeedDetailHeaderLayoutUseCase.parse(uiState.feed)
+                            headerLayoutUseCase = ItemFeedDetailHeaderLayoutUseCase.parse(uiState.feed)
                         )
                     }
 

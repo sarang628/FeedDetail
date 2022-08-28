@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:setCommentsUseCase="@{useCase.comments}"
             app:setHeaderUseCase="@{useCase.headerLayoutUseCase}"
-            tools:listitem="@layout/item_time_line_detail_header" />
+            tools:listitem="@layout/item_feed_detail_header" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -61,7 +61,8 @@
 
             <include
                 android:id="@+id/ic_item_write_comment"
-                layout="@layout/item_write_comment" />
+                layout="@layout/item_write_comment"
+                app:useCase="@{useCase.commentWrite}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

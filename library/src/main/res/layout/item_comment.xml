@@ -7,7 +7,7 @@
 
         <variable
             name="useCase"
-            type="com.sarang.feed_detail.data.usecase.ItemCommentLayoutUseCase" />
+            type="com.sarang.feed_detail.data.usecase.ItemFeedDetailCommentLayoutUseCase" />
 
         <import type="android.view.View" />
     </data>

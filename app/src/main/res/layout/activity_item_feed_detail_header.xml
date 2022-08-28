@@ -7,6 +7,6 @@
 
     <include
         android:id="@+id/ic_item_time_line_detail_header"
-        layout="@layout/item_time_line_detail_header" />
+        layout="@layout/item_feed_detail_header" />
 
 </LinearLayout>

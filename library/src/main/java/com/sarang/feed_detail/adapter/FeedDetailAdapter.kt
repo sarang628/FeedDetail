@@ -3,21 +3,33 @@ package com.sarang.feed_detail.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.torang_core.util.Logger
-import com.sarang.feed_detail.data.usecase.ItemCommentLayoutUseCase
-import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemFeedDetailCommentLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemFeedDetailHeaderLayoutUseCase
 import com.sarang.feed_detail.holder.TimeLineCommentHolder
 import com.sarang.feed_detail.holder.TimeLineDetailHeaderHolder
 
 class FeedDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int): Long {
+        if (position == 0) {
+            return 0
+        }
+
+        return comments[position - 1].commentId.toLong()
+    }
+
     enum class TimeLineDetailItemType {
         FEED,
         COMMENT
     }
 
-    private var headerUseCase: FeedDetailHeaderLayoutUseCase? = null
-    private var comments: ArrayList<ItemCommentLayoutUseCase> = ArrayList()
+    private var headerUseCase: ItemFeedDetailHeaderLayoutUseCase? = null
+    private var comments: ArrayList<ItemFeedDetailCommentLayoutUseCase> = ArrayList()
 
-    fun addComment(index: Int, comment: ItemCommentLayoutUseCase) {
+    fun addComment(index: Int, comment: ItemFeedDetailCommentLayoutUseCase) {
         comments.add(0, comment)
         notifyItemInserted(index)
     }
@@ -27,7 +39,7 @@ class FeedDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         else TimeLineDetailItemType.COMMENT.ordinal
     }
 
-    fun setComments(list: ArrayList<ItemCommentLayoutUseCase>?) {
+    fun setComments(list: ArrayList<ItemFeedDetailCommentLayoutUseCase>?) {
         list?.let {
             Logger.d(list.size)
             if (comments.size == 0 || it.size == comments.size) {
@@ -62,12 +74,12 @@ class FeedDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return count
     }
 
-    fun setHeader(useCase: FeedDetailHeaderLayoutUseCase?) {
+    fun setHeader(useCase: ItemFeedDetailHeaderLayoutUseCase?) {
         this.headerUseCase = useCase
         notifyDataSetChanged()
     }
 
-    fun deleteComment(comment: ItemCommentLayoutUseCase) {
+    fun deleteComment(comment: ItemFeedDetailCommentLayoutUseCase) {
         /*var deleteIndex = -1
         for (i in comments!!.indices) {
             if (comments!![i].comment_id == comment.comment_id) deleteIndex = i

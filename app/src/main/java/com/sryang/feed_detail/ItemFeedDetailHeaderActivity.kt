@@ -3,7 +3,7 @@ package com.sryang.feed_detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemFeedDetailHeaderLayoutUseCase
 import com.sryang.feed_detail.databinding.ActivityItemFeedDetailHeaderBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,7 @@ class ItemFeedDetailHeaderActivity : AppCompatActivity() {
         DUMMY.getItemHeader()
     )
 
-    val useCase: StateFlow<FeedDetailHeaderLayoutUseCase> = _useCase
+    val useCase: StateFlow<ItemFeedDetailHeaderLayoutUseCase> = _useCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityItemFeedDetailHeaderBinding.inflate(layoutInflater)
