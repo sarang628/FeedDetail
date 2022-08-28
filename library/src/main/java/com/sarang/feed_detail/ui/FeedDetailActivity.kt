@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TimeLineDetailActivity : AppCompatActivity() {
+class FeedDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feed_detail)
@@ -19,7 +19,7 @@ class TimeLineDetailActivity : AppCompatActivity() {
 
 object TimeLineDetailActivityLauncher {
     fun go(context: Context, reviewId: Int) {
-        context.startActivity(Intent(context, TimeLineDetailActivity::class.java).apply {
+        context.startActivity(Intent(context, FeedDetailActivity::class.java).apply {
             putExtra("reviewId", reviewId)
         })
     }

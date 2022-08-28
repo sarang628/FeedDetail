@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.sarang.feed_detail.ui.usecase.ItemCommentLayoutUseCase
+import com.sarang.feed_detail.data.usecase.ItemCommentLayoutUseCase
 import com.sryang.feed_detail.databinding.ActivityItemCommentBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 

@@ -3,8 +3,8 @@ package com.sryang.feed_detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.sarang.feed_detail.adapter.CommentsRvAdt
-import com.sarang.feed_detail.ui.usecase.CommentsLayoutUsecase
+import com.sarang.feed_detail.adapter.FeedDetailAdapter
+import com.sarang.feed_detail.data.usecase.CommentsFragmentUsecase
 import com.sryang.feed_detail.databinding.ActivityCommentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -16,15 +16,15 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CommentFragmentActivity : AppCompatActivity() {
 
-    val adapter = CommentsRvAdt()
-    val _useCase = MutableStateFlow(
-        CommentsLayoutUsecase(
+    private val adapter = FeedDetailAdapter()
+    private val _useCase = MutableStateFlow(
+        CommentsFragmentUsecase(
             comment = "",
             headerLayoutUseCase = DUMMY.getItemHeader(),
             comments = DUMMY.getItemCommentLayoutUseCases()
         )
     )
-    val useCase: StateFlow<CommentsLayoutUsecase> = _useCase
+    val useCase: StateFlow<CommentsFragmentUsecase> = _useCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityCommentDetailBinding.inflate(layoutInflater)

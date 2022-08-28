@@ -1,12 +1,10 @@
 package com.sryang.feed_detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.sarang.feed_detail.ui.usecase.ItemWriteCommentUsecase
+import com.sarang.feed_detail.data.usecase.ItemWriteCommentUsecase
 import com.sryang.feed_detail.databinding.ActivityItemWriteCommentBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -5,4 +5,4 @@
     class="com.sarang.feed_detail.ui.CommentsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sarang.feed_detail.ui.TimeLineDetailActivity" />
+    tools:context="com.sarang.feed_detail.ui.FeedDetailActivity" />

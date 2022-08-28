@@ -10,60 +10,51 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.torang_core.data.data.ReviewAndImage
-import com.example.torang_core.data.model.FeedData
-import com.example.torang_core.data.model.ReviewImage
-import com.example.torang_core.data.model.UserData
-import com.example.torang_core.navigation.MenuBottomSheetNavigation
-import com.example.torang_core.navigation.MyMenuBottomSheetNavigation
-import com.example.torang_core.navigation.NotLoggedInMenuBottomSheetNavigation
-import com.example.torang_core.navigation.ReportNavigation
-import com.sarang.feed_detail.adapter.CommentsRvAdt
+import com.sarang.feed_detail.adapter.FeedDetailAdapter
+import com.sarang.feed_detail.data.usecase.CommentsFragmentUsecase
+import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
 import com.sarang.feed_detail.databinding.FragmentCommentsBinding
-import com.sarang.feed_detail.ui.usecase.CommentsLayoutUsecase
-import com.sarang.feed_detail.viewmodel.TimeLineDetailViewModel
+import com.sarang.feed_detail.viewmodel.FeedDetailViewModel
+import com.sarang.feed_detail.test.TestFeedDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import java.util.*
-import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 /**
  * 코멘트를 볼 수 있는 화면
- * [CommentsRvAdt]
+ * [FeedDetailAdapter]
  * [TimeLineDetailHeaderHolder]
- * [TimeLineDetailViewModel]
+ * [FeedDetailViewModel]
  * [FragmentTimeLineDetailBinding]
  * [ItemCommentBinding]
  */
 @AndroidEntryPoint
 class CommentsFragment : Fragment() {
 
-    private val viewModel: TimeLineDetailViewModel by viewModels()
-    private val adapter = CommentsRvAdt()
-    val _layoutUsecase: MutableStateFlow<CommentsLayoutUsecase> = MutableStateFlow(
-        CommentsLayoutUsecase()
+    private val viewModel: TestFeedDetailViewModel by viewModels()
+    private val adapter = FeedDetailAdapter()
+    private val _layoutUsecase: MutableStateFlow<CommentsFragmentUsecase> = MutableStateFlow(
+        CommentsFragmentUsecase()
     )
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentCommentsBinding.inflate(layoutInflater, container, false)
         binding.init()
-        binding.subScribeUI(_layoutUsecase)
-        subScribeViewModel() // ViewModel 구독
+        binding.bindUseCase(_layoutUsecase)
+        subScribeUiState(_layoutUsecase)
         loadComment()
 
         return binding.root
     }
 
     private fun FragmentCommentsBinding.init() {
-        rvTimeLineDetail.adapter = adapter
+        adapter = this@CommentsFragment.adapter
         lifecycleOwner = viewLifecycleOwner
         setSupportActionbar(toolbar2) // 툴바 초기화
         toolbar2.setNavigationOnClickListener { //툴바 뒤로가기 버튼 클릭
@@ -71,25 +62,35 @@ class CommentsFragment : Fragment() {
         }
     }
 
-    private fun FragmentCommentsBinding.subScribeUI(
-        useCase: StateFlow<CommentsLayoutUsecase>
-    ) {
-        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            useCase.collect {
-                this@subScribeUI.usecase = it
-                it.errorMsg?.let { showErrorMsg(it) }
-                it.isEmpty?.let { if (it) showEmptyPopup() }
-                //it.reviewAndIamge?.let { adapter.setHeader(it) }
+    private fun subScribeUiState(layoutUseCase: MutableStateFlow<CommentsFragmentUsecase>) {
+        lifecycleScope.launchWhenResumed {
+            viewModel.uiState.collect {
+                it?.let { uiState ->
+                    layoutUseCase.update {
+                        it.copy(
+                            comment = uiState.comment,
+                            errorMsg = uiState.errorMsg,
+                            isEmpty = uiState.isEmptyFeed,
+                            //comments = uiState.comments1
+                            reviewAndIamge = uiState.feed,
+                            headerLayoutUseCase = FeedDetailHeaderLayoutUseCase.parse(uiState.feed)
+                        )
+                    }
+                }
             }
         }
     }
 
-    private fun subScribeViewModel() {
-        lifecycleScope.launchWhenResumed {
-            viewModel.uiState.collect {
-                it?.let {
-
-                }
+    private fun FragmentCommentsBinding.bindUseCase(
+        useCase: StateFlow<CommentsFragmentUsecase>
+    ) {
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+            useCase.collect {
+                this@bindUseCase.usecase = it
+                it.errorMsg?.let { showErrorMsg(it) }
+                it.isEmpty?.let { if (it) showEmptyPopup() }
+                this@CommentsFragment.adapter.setHeader(it.headerLayoutUseCase)
+                //it.reviewAndIamge?.let { adapter.setHeader(it) }
             }
         }
     }

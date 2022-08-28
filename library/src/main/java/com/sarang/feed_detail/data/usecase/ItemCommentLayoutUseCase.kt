@@ -1,4 +1,4 @@
-package com.sarang.feed_detail.ui.usecase
+package com.sarang.feed_detail.data.usecase
 
 import android.view.View
 

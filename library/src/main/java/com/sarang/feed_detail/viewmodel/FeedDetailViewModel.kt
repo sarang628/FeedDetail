@@ -1,21 +1,16 @@
 package com.sarang.feed_detail.viewmodel
 
 import androidx.lifecycle.*
-import com.example.torang_core.data.data.ReviewAndImage
-import com.example.torang_core.data.model.Comment
-import com.example.torang_core.data.model.CommentData
 import com.example.torang_core.repository.FeedRepository
 import com.example.torang_core.repository.TimeLineDetailRepository
-import com.example.torang_core.util.Event
-import com.example.torang_core.util.Logger
+import com.sarang.feed_detail.data.uistate.FeedDetailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TimeLineDetailViewModel @Inject constructor(
+class FeedDetailViewModel @Inject constructor(
     private val timeLineDetailRepository: TimeLineDetailRepository,
     private val feedRepository: FeedRepository
 ) : ViewModel() {

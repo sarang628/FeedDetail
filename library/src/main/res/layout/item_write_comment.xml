@@ -6,7 +6,7 @@
     <data>
         <variable
             name="useCase"
-            type="com.sarang.feed_detail.ui.usecase.ItemWriteCommentUsecase" />
+            type="com.sarang.feed_detail.data.usecase.ItemWriteCommentUsecase" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

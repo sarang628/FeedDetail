@@ -1,13 +1,12 @@
-package com.sarang.feed_detail.ui.usecase
+package com.sarang.feed_detail.data.usecase
 
 import com.example.torang_core.data.data.ReviewAndImage
-import com.example.torang_core.data.model.Comment
 
-data class CommentsLayoutUsecase(
+data class CommentsFragmentUsecase(
     val comment: String? = null,
     val errorMsg: String? = null,
     val isEmpty: Boolean? = null,
     val comments: ArrayList<ItemCommentLayoutUseCase>? = null,
     val reviewAndIamge: ReviewAndImage? = null,
-    val headerLayoutUseCase: ItemTimeLineDetailHeaderLayoutUseCase? = null
+    val headerLayoutUseCase: FeedDetailHeaderLayoutUseCase? = null
 )

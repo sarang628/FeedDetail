@@ -30,7 +30,7 @@
             android:exported="true" />
 
         <activity
-            android:name="com.sarang.feed_detail.ui.TimeLineDetailActivity"
+            android:name="com.sarang.feed_detail.ui.FeedDetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

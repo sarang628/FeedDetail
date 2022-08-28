@@ -2,31 +2,19 @@ package com.sarang.feed_detail.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.torang_core.data.data.ReviewAndImage
-import com.example.torang_core.data.model.Comment
 import com.example.torang_core.util.Logger
+import com.sarang.feed_detail.data.usecase.ItemCommentLayoutUseCase
+import com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase
 import com.sarang.feed_detail.holder.TimeLineCommentHolder
 import com.sarang.feed_detail.holder.TimeLineDetailHeaderHolder
-import com.sarang.feed_detail.ui.usecase.ItemCommentLayoutUseCase
-import com.sarang.feed_detail.ui.usecase.ItemTimeLineDetailHeaderLayoutUseCase
-import java.util.*
 
-/**
- * [AddCommentHolder]
- * [CommentsRvAdt]
- * [CommentsFragment]
- * [ItemCommentBinding]
- * [TimeLineDetailHeaderHolder]
- * [ItemTimeLineDetailHeaderBinding]
- */
-
-class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FeedDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     enum class TimeLineDetailItemType {
         FEED,
         COMMENT
     }
 
-    private var headerUseCase: ItemTimeLineDetailHeaderLayoutUseCase? = null
+    private var headerUseCase: FeedDetailHeaderLayoutUseCase? = null
     private var comments: ArrayList<ItemCommentLayoutUseCase> = ArrayList()
 
     fun addComment(index: Int, comment: ItemCommentLayoutUseCase) {
@@ -70,11 +58,11 @@ class CommentsRvAdt : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {
         var count = 0
-        if (comments != null) count += comments!!.size + 1
+        count += comments.size + 1
         return count
     }
 
-    fun setHeader(useCase: ItemTimeLineDetailHeaderLayoutUseCase?) {
+    fun setHeader(useCase: FeedDetailHeaderLayoutUseCase?) {
         this.headerUseCase = useCase
         notifyDataSetChanged()
     }

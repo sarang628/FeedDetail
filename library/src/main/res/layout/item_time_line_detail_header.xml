@@ -8,7 +8,7 @@
 
         <variable
             name="useCase"
-            type="com.sarang.feed_detail.ui.usecase.ItemTimeLineDetailHeaderLayoutUseCase" />
+            type="com.sarang.feed_detail.data.usecase.FeedDetailHeaderLayoutUseCase" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
