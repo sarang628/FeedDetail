@@ -51,7 +51,7 @@ abstract class LoginNavigationModule {
 
 class LoginNavigationImpl @Inject constructor() : LoginNavigation {
     override fun goLogin(fragmentManager: FragmentManager?) {
-        TODO("Not yet implemented")
+        
     }
 
     override fun goLogin(context: Context) {
